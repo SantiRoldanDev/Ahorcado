@@ -1,60 +1,84 @@
-Carpeta principal de proyecto ahorcado.
+# Proyecto Ahorcado – Python
 
+## Carpeta principal del proyecto
 
-=======================================================================================
-06/11 ACTUALIZACIÓN (SANTI)
-=======================================================================================
-Creación de estructura de proyecto (carpeta principal, archivo readme, y archivos python)
+### 06/11 – ACTUALIZACIÓN (SANTI)
 
-Estructura de archivos:
-    hangman_project/
-        │
-        ├── main.py # Bucle del juego
-        ├── game.py # Clase HangmanGame (lógica del juego)
-        ├── utils.py # Funciones auxiliares 
-        ├── wordlist.txt # Lista de frases (una por línea)
-        └── README.md # Instrucciones y descripción del juego
+Creación de la estructura del proyecto (carpeta principal, archivo README y archivos Python).
 
+**Estructura de archivos:**
 
-TAREA 0: 
-        - Creación de estructura y listado de palabras.
-        - En main.py creamos la función Iniciar() que realiza la tarea 3 de solicitar una palabra.
-        
-TAREA 1: CLASE UTILS
-    - Creación de funcion en utils.py: get_random_word().
-    - get_random_word():
-        - Se abre el archivo wordlist con with open("wordlist.txt", encoding="utf-8") as wordlist
-        - Se recorre cada linea del archivo y se hace Split() que elimina los espacios y saltos de linea, si la linea es diferente a vacía se guarda en una lista de palabras.
-        - Se retorna una de las palabras de la lista words con random.choice(words)
+```text
+hangman_project/
+│
+├── main.py          # Bucle del juego
+├── game.py          # Clase HangmanGame (lógica del juego)
+├── utils.py         # Funciones auxiliares
+├── wordlist.txt     # Lista de palabras (una por línea)
+└── README.md        # Documentación del proyecto
+```
 
-TAREA 2: 
-CLASE GAME:
-    - Se define una clase Game, con los atributos:
-        - word: Palabra objetivo llama directamente a get_random_word() al inicializarse.
-        - guessed_letters: las letras que el usuario ha adivinado
-        - max_errors: maxima cantidad de errores posibles (establecido en 6)
-        - errors: numero de respuestas incorrectas
-    - Función display_progress(): Muestra las letras adivinadas en guessed_letters 
-        - Itera sobre cada letra de la palabra objetivo de la clase (atributo word)
-        - Si la letra se encuentra dentro de las letras adivinadas (guessed_letters), se muestra la letra y continua iterando, si no la encuentra se muestra un _.
-        
-TAREA 3:
-MANEJAR LA ENTRADA DEL USUARIO
-ARCHIVO MAIN.PY
+---
 
-En la función Iniciar que nombramos en la TAREA 0:
-    - El usuario ingresa y se crea la clase HangmanGame definida en la tarea 2.
-        - Al crearla la tendremos seteada con una palabra objetivo, una listas de palabras adivinadas vacia, etc como se define en la Tarea 2.
-    - Definimos una variable letras usadas para guardar todas las letras que el usuario ingrese (esto es para un paso mas adelante)
-    - Generamos un bucle donde mientras el numero de errores sea menor a la cantidad maxima de errores y no esté la palabra completada se siguen solicitando palabras.
+## TAREA 0: Creación de estructura y listado de palabras
 
-        while Juego.errors < Juego.max_errors and not Juego.palabra_completa():
-            letra = input("Adivina una letra: ").lower()
-    
-    - Debajo se hacen diferentes validaciones:
-        - si es una letra valida.
-        - Si es una letra que ya se intentó
-    Reproduce un mensaje de error por ahora solo un print() cuando pasa.
+- Creación de la estructura principal del proyecto.
+- Creación del listado de palabras.
+- En `main.py` creamos la función `iniciar()`, que se encargará de realizar la Tarea 3: solicitar una palabra al usuario.
 
-FIN ACTUALIZACIÓN 6/11
-==========================================================================================
+## TAREA 1: Clase UTILS
+
+Creación de la función `get_random_word()` en `utils.py`.
+
+**Funcionamiento de `get_random_word()`:**
+
+- Se abre el archivo `wordlist.txt` utilizando `with open("wordlist.txt", encoding="utf-8")`.
+- Se recorre cada línea del archivo.
+- Se utiliza `strip()` para eliminar los espacios y saltos de línea.
+- Si la línea no está vacía, se guarda en una lista de palabras.
+- Finalmente, se retorna una palabra aleatoria utilizando `random.choice(words)`.
+
+## TAREA 2: Clase GAME
+
+Se define una clase `HangmanGame`, con los siguientes atributos:
+
+- `word`: Palabra objetivo. Se obtiene directamente mediante `get_random_word()` al inicializar la clase.
+- `guessed_letters`: Lista de letras que el usuario ha adivinado.
+- `max_errors`: Cantidad máxima de errores permitidos (establecido en 6).
+- `errors`: Número de respuestas incorrectas.
+
+**Función `display_progress()`:**
+
+Muestra el progreso de la palabra objetivo según las letras que el usuario ha adivinado.
+
+- Itera sobre cada letra de la palabra objetivo (`word`).
+- Si la letra se encuentra dentro de `guessed_letters`, se muestra la letra correspondiente.
+- Si no se encuentra, se muestra un `_`.
+
+## TAREA 3: Manejar la entrada del usuario
+
+**Archivo: `main.py`**
+
+Dentro de la función `iniciar()` que creamos en la Tarea 0:
+
+1. El usuario inicia el juego y se crea una instancia de la clase `HangmanGame`, definida en la Tarea 2.
+2. Al crear la instancia, se inicializan sus atributos: palabra objetivo, lista de letras adivinadas vacía, cantidad máxima de errores, etc.
+3. Definimos una variable `letras_usadas` para guardar todas las letras que el usuario ingrese (esto será utilizado en un paso posterior).
+4. Generamos un bucle que se ejecutará mientras el número de errores sea menor a la cantidad máxima permitida y la palabra no esté completada.
+
+**Bucle principal:**
+
+```python
+while juego.errors < juego.max_errors and not juego.palabra_completa():
+    letra = input("Adivina una letra: ").lower()
+```
+
+**Validaciones posteriores:**
+
+- Comprobar si la entrada del usuario es una letra válida.
+- Comprobar si la letra ya fue utilizada anteriormente.
+- Mostrar un mensaje de error mediante `print()` cuando alguna de estas validaciones no se cumpla.
+
+---
+
+**FIN ACTUALIZACIÓN 06/11**
