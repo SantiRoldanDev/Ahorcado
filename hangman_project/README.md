@@ -1,5 +1,17 @@
 # Proyecto Ahorcado – Python
 
+## Cómo jugar
+
+Desde la raíz del repositorio, ejecuta estos comandos.
+
+```bash
+cd hangman_project
+python main.py
+```
+
+Ingresa una letra por turno. Pierdes al acumular seis errores.
+Los espacios y signos de la palabra oculta se muestran desde el comienzo.
+
 ## Carpeta principal del proyecto
 
 ### 06/11 – ACTUALIZACIÓN (SANTI)
@@ -24,7 +36,7 @@ hangman_project/
 
 - Creación de la estructura principal del proyecto.
 - Creación del listado de palabras.
-- En `main.py` creamos la función `iniciar()`, que se encargará de realizar la Tarea 3: solicitar una palabra al usuario.
+- En `main.py` creamos la función `Iniciar()`, que le pide al usuario una letra por turno.
 
 ## TAREA 1: Clase UTILS
 
@@ -43,7 +55,7 @@ Creación de la función `get_random_word()` en `utils.py`.
 Se define una clase `HangmanGame`, con los siguientes atributos:
 
 - `word`: Palabra objetivo. Se obtiene directamente mediante `get_random_word()` al inicializar la clase.
-- `guessed_letters`: Lista de letras que el usuario ha adivinado.
+- `guessed_letters`: Conjunto de letras que el usuario ha adivinado.
 - `max_errors`: Cantidad máxima de errores permitidos (establecido en 6).
 - `errors`: Número de respuestas incorrectas.
 
@@ -52,24 +64,24 @@ Se define una clase `HangmanGame`, con los siguientes atributos:
 Muestra el progreso de la palabra objetivo según las letras que el usuario ha adivinado.
 
 - Itera sobre cada letra de la palabra objetivo (`word`).
-- Si la letra se encuentra dentro de `guessed_letters`, se muestra la letra correspondiente.
-- Si no se encuentra, se muestra un `_`.
+- Se muestran las letras adivinadas y los caracteres que no son letras.
+- Las letras pendientes se muestran como `_`.
 
 ## TAREA 3: Manejar la entrada del usuario
 
 **Archivo: `main.py`**
 
-Dentro de la función `iniciar()` que creamos en la Tarea 0:
+Dentro de la función `Iniciar()` que creamos en la Tarea 0:
 
 1. El usuario inicia el juego y se crea una instancia de la clase `HangmanGame`, definida en la Tarea 2.
-2. Al crear la instancia, se inicializan sus atributos: palabra objetivo, lista de letras adivinadas vacía, cantidad máxima de errores, etc.
-3. Definimos una variable `letras_usadas` para guardar todas las letras que el usuario ingrese (esto será utilizado en un paso posterior).
+2. Al crear la instancia, se inicializan sus atributos: palabra objetivo, conjunto de letras adivinadas vacío, cantidad máxima de errores, etc.
+3. Definimos una variable `letrasUsadas` para guardar las letras válidas que el usuario ya intentó.
 4. Generamos un bucle que se ejecutará mientras el número de errores sea menor a la cantidad máxima permitida y la palabra no esté completada.
 
 **Bucle principal:**
 
 ```python
-while juego.errors < juego.max_errors and not juego.palabra_completa():
+while not Juego.is_won() and not Juego.is_lost():
     letra = input("Adivina una letra: ").lower()
 ```
 

@@ -6,30 +6,35 @@ import game as game
 #Función principal donde inicia el juego del ahorcado.
 
 def Iniciar():
-    print("Bienvenido al juego del Ahorcado!")
+    print("\n--- Nueva partida ---")
     Juego = game.HangmanGame()
     Juego.display_progress()
     letrasUsadas = set()
     while not Juego.is_won() and not Juego.is_lost():        
-        letra = input("Adivina una letra: ").lower()
+        letra = input("\nAdivina una letra: ").lower()
+        if len(letra) != 1 or not letra.isalpha():
+            print("Ingrese una letra")
+            continue
         if letra in letrasUsadas:
             print("Ya has intentado esa letra. Intenta con otra.")
             continue
-        if letra in Juego.guessed_letters:
-            print("Ya has adivinado esa letra. Intenta con otra.")
-            continue
-        if letra < 'a' or letra > 'z' or len(letra) != 1:
-            print("Por favor, ingresa una letra válida.")
-            continue
-        if letra in Juego.word:
+        if Juego.process_guess(letra):
             print("¡Correcto!")
-            Juego.guessed_letters.add(letra)
         else:
-            Juego.errors += 1
+            print("Esa letra no está en la palabra.")
         letrasUsadas.add(letra)
+        print()
         Juego.display_progress()
     if Juego.is_won():
-        print("¡Ganaste!")
+        print("\n¡Ganaste!")
     else:
-        print(f"Fin del juego. La palabra era: {Juego.word}")
-Iniciar()   
+        print(f"\nFin del juego. La palabra era: {Juego.word}")
+
+print("Bienvenido al juego del Ahorcado!")
+while True:
+    Iniciar()
+    respuesta = input("\n¿Querés jugar otra vez? (s/n): ").strip().lower()
+    while respuesta != "s" and respuesta != "n":
+        respuesta = input("Ingresá s o n: ").strip().lower()
+    if respuesta == "n":
+        break
