@@ -17,13 +17,9 @@ del conteo.
 
 Ingresa una letra por turno. Tienes seis intentos incorrectos antes de perder.
 
-## Carpeta principal del proyecto
-
-### 06/11 – ACTUALIZACIÓN (SANTI)
+## Estructura del proyecto
 
 Creación de la estructura del proyecto (carpeta principal, archivo README y archivos Python).
-
-**Estructura de archivos:**
 
 ```text
 hangman_project/
@@ -35,19 +31,17 @@ hangman_project/
 └── README.md        # Instrucciones y descripción del juego
 ```
 
----
-
-## TAREA 0: Creación de estructura y listado de palabras
+## Tarea 0. Estructura y listado de palabras
 
 - Creación de la estructura principal del proyecto.
 - Creación del listado de palabras.
 - En `main.py` creamos la función `Iniciar()`, que se encargará de realizar la Tarea 3: solicitar una letra al usuario.
 
-## TAREA 1: Clase UTILS
+## Tarea 1. Carga de una palabra desde un archivo
 
 Creación de la función `get_random_word()` en `utils.py`.
 
-**Funcionamiento de `get_random_word()`:**
+### Funcionamiento de `get_random_word()`
 
 - Se abre el archivo `wordlist.txt` utilizando `with open("wordlist.txt", encoding="utf-8")`.
 - Se recorre cada línea del archivo.
@@ -55,7 +49,7 @@ Creación de la función `get_random_word()` en `utils.py`.
 - Si la línea no está vacía, se guarda en una lista de palabras.
 - Finalmente, se retorna una palabra aleatoria utilizando `random.choice(words)`.
 
-## TAREA 2: Clase GAME
+## Tarea 2. Clase `HangmanGame`
 
 Se define una clase `HangmanGame`, con los siguientes atributos:
 
@@ -64,7 +58,7 @@ Se define una clase `HangmanGame`, con los siguientes atributos:
 - `max_errors`: Cantidad máxima de errores permitidos (establecido en 6).
 - `errors`: Número de respuestas incorrectas.
 
-**Función `display_progress()`:**
+### Método `display_progress()`
 
 Muestra el progreso de la palabra objetivo según las letras que el usuario ha adivinado.
 
@@ -72,7 +66,7 @@ Muestra el progreso de la palabra objetivo según las letras que el usuario ha a
 - Se muestran las letras adivinadas y los caracteres que no son letras.
 - Las letras pendientes se muestran como `_`.
 
-## TAREA 3: Manejar la entrada del usuario
+## Tarea 3. Entrada del usuario
 
 **Archivo: `main.py`**
 
@@ -83,30 +77,32 @@ Dentro de la función `Iniciar()` que creamos en la Tarea 0:
 3. Definimos una variable `letrasUsadas` para guardar las letras válidas que el usuario ya intentó.
 4. Generamos un bucle que se ejecutará mientras el número de errores sea menor a la cantidad máxima permitida y la palabra no esté completada.
 
-**Bucle principal:**
+### Bucle principal
 
 ```python
 while not Juego.is_won() and not Juego.is_lost():
     letra = input("\nAdivina una letra: ").lower()
 ```
 
-**Validaciones posteriores:**
+### Validaciones de entrada
 
 - Comprobar si la entrada del usuario es una letra válida.
 - Comprobar si la letra ya fue utilizada anteriormente.
 - Mostrar un mensaje de error mediante `print()` cuando alguna de estas validaciones no se cumpla.
 
----
+## Tarea 4. Actualización del estado del juego
 
-**FIN ACTUALIZACIÓN 06/11**
+`process_guess` en `HangmanGame` (`game.py`).
 
-## ACTUALIZACIÓN 2 - Mariana
-## Avance de tareas
-- Tarea 4: `process_guess` en `HangmanGame` (game.py)
-- Tarea 5: se muestran letras adivinadas e intentos restantes en `display_progress` (game.py)
-- Tarea 6: `is_won` e `is_lost` en game.py, y fin del juego con mensaje en main.py
+## Tarea 5. Progreso del juego
 
-## Tarea 7 y mejoras del juego
+Se muestran letras adivinadas e intentos restantes en `display_progress` (`game.py`).
+
+## Tarea 6. Condiciones de fin del juego
+
+`is_won` e `is_lost` en `game.py`, y fin del juego con mensaje en `main.py`.
+
+## Tarea 7. Revelado automático y mejoras del juego
 
 - Los espacios y signos se muestran desde el inicio. Para ganar solo hay que adivinar las letras.
 - El juego valida que se ingrese una letra por turno y avisa si ya se intentó. Cada letra válida y nueva se procesa con `process_guess()`, y el juego indica si fue un acierto o un error.
