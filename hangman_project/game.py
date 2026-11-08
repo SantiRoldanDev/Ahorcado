@@ -33,3 +33,10 @@ class HangmanGame:
 
 
 
+    def process_guess(self, letter):
+        if letter in self.word:
+            self.guessed_letters.add(letter)
+            return True
+        else:
+            self.errors += 1
+            return False
