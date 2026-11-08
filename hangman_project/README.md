@@ -31,7 +31,8 @@ hangman_project/
 ├── main.py          # Bucle del juego
 ├── game.py          # Clase HangmanGame (lógica del juego)
 ├── utils.py         # Funciones auxiliares
-└── wordlist.txt     # Lista de palabras y títulos (uno por línea)
+├── wordlist.txt     # Lista de palabras y títulos (uno por línea)
+└── README.md        # Instrucciones y descripción del juego
 ```
 
 ---
