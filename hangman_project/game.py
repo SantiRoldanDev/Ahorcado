@@ -21,8 +21,9 @@ class HangmanGame:
             else:
                 progreso_mostrado += "_ "
         print(f"Errores: {self.errors}/{self.max_errors}")
+        print(f"Letras adivinadas: {', '.join(sorted(self.guessed_letters))}")
         print(f"Progreso: {progreso_mostrado}")
-
+        print(f"Intentos restantes: {self.max_errors - self.errors}")
     def palabra_completa(self):
         #True si ya se adivinaron todas las letras de la palabra.
         return set(self.word) <= self.guessed_letters
