@@ -31,8 +31,7 @@ hangman_project/
 ├── main.py          # Bucle del juego
 ├── game.py          # Clase HangmanGame (lógica del juego)
 ├── utils.py         # Funciones auxiliares
-├── wordlist.txt     # Lista de palabras (una por línea)
-└── README.md        # Documentación del proyecto
+└── wordlist.txt     # Lista de palabras y títulos (uno por línea)
 ```
 
 ---
@@ -113,3 +112,10 @@ while not Juego.is_won() and not Juego.is_lost():
 - La lista incluye palabras y títulos de películas.
 - Los turnos están separados por líneas en blanco para que se lea mejor el progreso.
 - Al ganar o perder, el juego pregunta si quieres jugar otra vez. Con `s` empieza una nueva partida y con `n` termina.
+
+## Tarea 8. Niveles de dificultad
+
+Al comenzar cada partida, el jugador elige fácil (hasta 5 letras), medio
+(de 6 a 9) o difícil (10 o más). El juego elige al azar una entrada del nivel.
+Los espacios y los signos quedan fuera del conteo. Todos los niveles permiten
+hasta seis errores.
