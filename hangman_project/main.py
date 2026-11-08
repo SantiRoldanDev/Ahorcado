@@ -10,7 +10,7 @@ def Iniciar():
     Juego = game.HangmanGame()
     Juego.display_progress()
     letrasUsadas = set()
-    while Juego.errors < Juego.max_errors and not Juego.palabra_completa():
+    while not Juego.is_won() and not Juego.is_lost():        
         letra = input("Adivina una letra: ").lower()
         if letra in letrasUsadas:
             print("Ya has intentado esa letra. Intenta con otra.")
@@ -28,6 +28,8 @@ def Iniciar():
             Juego.errors += 1
         letrasUsadas.add(letra)
         Juego.display_progress()
-    return 
-
-Iniciar()
+    if Juego.is_won():
+        print("¡Ganaste!")
+    else:
+        print(f"Fin del juego. La palabra era: {Juego.word}")
+Iniciar()   

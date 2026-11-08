@@ -41,3 +41,9 @@ class HangmanGame:
         else:
             self.errors += 1
             return False
+
+    def is_won(self):
+        return self.palabra_completa()
+
+    def is_lost(self):
+        return self.errors >= self.max_errors
