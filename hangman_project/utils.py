@@ -1,21 +1,28 @@
 #!/usr/bin/env python3
 import random
 
-def get_random_word():
-    #Obtener una palabra random de la lista de palabras.
-    #Como funciona:     
-    #se leen todas las palabras y se elige una al azar.
-    
-    #Se abre el archivo wordlist.txt, (open(wordlist.txt))
+
+def get_random_word(dificultad=None):
+    words = []
     with open("wordlist.txt", encoding="utf-8") as wordlist:
-        #Se leen todas las palabras y se elige una al azar.
-        #Se eliminan los espacios en blanco al inicio y al final de cada palabra con strip
-        #En strip() si la palabra está vacia, el if da false y no se agrega a la lista words.
-        words = []
-        for line in wordlist: #se recorre cada línea del archivo wordlist.txt
-            if line.strip(): #si la palabra no está vacía se agrega a words
-                words.append(line.strip()) 
+        for line in wordlist:
+            word = line.strip()
+            cantidad = 0
+            for letter in word:
+                if letter.isalpha():
+                    cantidad += 1
 
-    return random.choice(words) #se selecciona una palabra al azar de la lista de words y se devuelve.
+            if cantidad == 0:
+                continue
+            if dificultad is None:
+                words.append(word)
+            elif dificultad == "1" and cantidad <= 5:
+                words.append(word)
+            elif dificultad == "2" and 6 <= cantidad <= 9:
+                words.append(word)
+            elif dificultad == "3" and cantidad >= 10:
+                words.append(word)
 
-
+    if not words:
+        return None
+    return random.choice(words)

@@ -2,8 +2,8 @@
 import utils as utils
 
 class HangmanGame:
-    def __init__(self):
-        self.word = utils.get_random_word()
+    def __init__(self, dificultad=None):
+        self.word = utils.get_random_word(dificultad)
         self.guessed_letters = set()
         self.max_errors = 6
         self.errors = 0

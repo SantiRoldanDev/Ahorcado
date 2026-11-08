@@ -11,6 +11,10 @@ cd hangman_project
 python main.py
 ```
 
+Al iniciar cada partida, elige la dificultad. Fácil tiene hasta 5 letras, medio
+tiene de 6 a 9 y difícil tiene 10 o más. Los espacios y los signos quedan fuera
+del conteo.
+
 Ingresa una letra por turno. Tienes seis intentos incorrectos antes de perder.
 
 ## Carpeta principal del proyecto
