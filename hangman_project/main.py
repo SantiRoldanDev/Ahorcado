@@ -40,6 +40,7 @@ def Iniciar():
             print("Esa letra no está en la palabra.")
         letrasUsadas.add(letra)
         print()
+        print("Letras intentadas:", ", ".join(sorted(letrasUsadas)))
         Juego.display_progress()
     if Juego.is_won():
         print("\n¡Ganaste!")
